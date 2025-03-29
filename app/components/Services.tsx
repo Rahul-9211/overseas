@@ -1,118 +1,135 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BriefcaseIcon, GlobeAltIcon, DocumentCheckIcon, UserGroupIcon, BuildingOfficeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { useInView } from 'react-intersection-observer';
+import { 
+  BriefcaseIcon, 
+  GlobeAltIcon, 
+  DocumentCheckIcon, 
+  UserGroupIcon,
+  BuildingOfficeIcon,
+  AcademicCapIcon
+} from '@heroicons/react/24/outline';
 
 const services = [
   {
-    name: 'Work Visas',
-    description: 'Professional assistance for work visa applications to various countries worldwide.',
+    title: 'Work Visas',
+    description: 'Expert assistance for work visa applications across multiple countries. We handle everything from documentation to interview preparation.',
     icon: BriefcaseIcon,
-    features: ['Employment-based visas', 'Business visas', 'Skilled worker visas'],
+    color: 'from-blue-500 to-blue-600',
+    darkColor: 'from-blue-400 to-blue-500',
   },
   {
-    name: 'Visit Visas',
-    description: 'Expert guidance for tourist and business visit visa applications.',
+    title: 'Visit Visas',
+    description: 'Smooth processing of visit visa applications for tourism, business meetings, and family visits.',
     icon: GlobeAltIcon,
-    features: ['Tourist visas', 'Business visit visas', 'Family visit visas'],
+    color: 'from-purple-500 to-purple-600',
+    darkColor: 'from-purple-400 to-purple-500',
   },
   {
-    name: 'Document Processing',
-    description: 'Comprehensive document preparation and verification services.',
+    title: 'Documentation',
+    description: 'Comprehensive documentation support including visa applications, passport renewal, and legal paperwork.',
     icon: DocumentCheckIcon,
-    features: ['Document verification', 'Translation services', 'Legalization'],
+    color: 'from-green-500 to-green-600',
+    darkColor: 'from-green-400 to-green-500',
   },
   {
-    name: 'Visa Consultation',
-    description: 'Personalized consultation to help you choose the right visa type.',
+    title: 'Family Sponsorship',
+    description: 'Complete guidance for family sponsorship visa applications and reunification processes.',
     icon: UserGroupIcon,
-    features: ['One-on-one consultation', 'Visa assessment', 'Strategy planning'],
+    color: 'from-red-500 to-red-600',
+    darkColor: 'from-red-400 to-red-500',
   },
   {
-    name: 'Corporate Immigration',
-    description: 'Specialized immigration solutions for businesses and organizations.',
+    title: 'Business Immigration',
+    description: 'Specialized services for business immigration, including investor visas and business establishment.',
     icon: BuildingOfficeIcon,
-    features: ['Corporate visas', 'Group applications', 'Business immigration'],
+    color: 'from-yellow-500 to-yellow-600',
+    darkColor: 'from-yellow-400 to-yellow-500',
   },
   {
-    name: 'Express Processing',
-    description: 'Fast-track visa processing for urgent applications.',
-    icon: ClockIcon,
-    features: ['Priority processing', 'Express service', 'Urgent applications'],
+    title: 'Student Visas',
+    description: 'End-to-end support for student visa applications and educational institution selection.',
+    icon: AcademicCapIcon,
+    color: 'from-indigo-500 to-indigo-600',
+    darkColor: 'from-indigo-400 to-indigo-500',
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
 export default function Services() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <div className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Our Immigration Services</h2>
-            <p className="section-subtitle">
-              Comprehensive immigration solutions tailored to your needs. We handle everything from application to approval.
-            </p>
-          </motion.div>
-        </div>
+    <section className="py-20 bg-gray-50 dark:bg-dark-900">
+      <div className="container">
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          {services.map((service) => (
+          <h2 className="section-title">Our Services</h2>
+          <p className="section-subtitle">
+            Comprehensive immigration solutions tailored to your needs. 
+            We handle every aspect of your visa application process.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
             <motion.div
-              key={service.name}
-              variants={item}
-              className="card group relative"
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
             >
-              <div className="flex items-center gap-x-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white group-hover:bg-primary-700 transition-colors">
-                  <service.icon className="h-6 w-6" aria-hidden="true" />
+              <div className="card h-full hover:shadow-xl transition-all duration-300">
+                <div className="relative">
+                  {/* Service Icon */}
+                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${service.color} dark:${service.darkColor} 
+                                 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  {/* Service Title */}
+                  <h3 className="text-xl font-semibold mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 
+                               transition-colors duration-300">
+                    {service.title}
+                  </h3>
+
+                  {/* Service Description */}
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {service.description}
+                  </p>
+
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/5 to-primary-500/0 
+                                dark:from-primary-400/0 dark:via-primary-400/5 dark:to-primary-400/0
+                                translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                 </div>
-                <h3 className="text-lg font-semibold leading-7 text-dark-900">{service.name}</h3>
-              </div>
-              <p className="mt-4 text-base leading-7 text-dark-600">{service.description}</p>
-              <ul className="mt-6 space-y-3">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-x-3 text-sm text-dark-600">
-                    <svg className="h-5 w-5 flex-none text-primary-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                <a href="#" className="text-sm font-semibold leading-6 text-primary-600 hover:text-primary-500">
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-16 text-center"
+        >
+          <button className="btn-primary">
+            Explore All Services
+            <span className="ml-2">→</span>
+          </button>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 } 
