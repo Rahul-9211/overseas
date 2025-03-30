@@ -1,28 +1,51 @@
+'use client';
+
+import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import WorkVisa from './components/WorkVisa';
-import VisitVisa from './components/VisitVisa';
 import Features from './components/Features';
-import Testimonials from './components/Testimonials';
-import Appointment from './components/Appointment';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
+import SchengenVisa from './components/SchengenVisa';
+import TouristVisa from './components/TouristVisa';
+import WorkVisa from './components/WorkVisa';
+import Appointment from './components/Appointment';
+import ConsultationForm from './components/ConsultationForm';
+import EligibilityForm from './components/EligibilityForm';
+import VisitVisa from './components/VisitVisa';
+import ApplicationSteps from './components/ApplicationSteps';
+import Testimonials from './components/Testimonials';
+import VisaImageSlider from './components/VisaImageSlider';
+import LanguageCourses from './components/LanguageCourses';
+import TravelCourses from './components/TravelCourses';
+import AboutUs from './components/AboutUs';
 
 export default function Home() {
+  const [isConsultationFormOpen, setIsConsultationFormOpen] = useState(false);
+
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white dark:bg-dark-900">
       <Header />
-      <Hero />
+      <Hero onConsultationClick={() => setIsConsultationFormOpen(true)} />
       <Services />
-      <WorkVisa />
-      {/* <VisitVisa /> */}
+      {/* <SchengenVisa /> */}
+      <TouristVisa />
+      <EligibilityForm />
       <Features />
-      <Testimonials />
-      <Appointment />
+      {/* <ApplicationSteps /> */}
+      <VisaImageSlider />
+      <LanguageCourses />
+      <TravelCourses />
+      {/* <WorkVisa /> */}
+      {/* <Testimonials /> */}
+      {/* <VisitVisa /> */}
+      {/* <Appointment /> */}
       <Contact />
-      <Footer />
-      {/* Additional sections will be added here */}
+      {/* <Footer /> */}
+      <ConsultationForm
+        isOpen={isConsultationFormOpen}
+        onClose={() => setIsConsultationFormOpen(false)}
+      />
     </main>
   );
 }

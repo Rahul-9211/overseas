@@ -1,119 +1,138 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CalendarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { CalendarIcon, ClockIcon, PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+
+const appointmentTypes = [
+  {
+    title: 'Initial Consultation',
+    description: 'Free consultation to discuss your visa requirements and eligibility.',
+    duration: '30 minutes'
+  },
+  {
+    title: 'Document Review',
+    description: 'Comprehensive review of your documents and application materials.',
+    duration: '1 hour'
+  },
+  {
+    title: 'Application Assistance',
+    description: 'Guided assistance in completing your visa application forms.',
+    duration: '1.5 hours'
+  },
+  {
+    title: 'Interview Preparation',
+    description: 'Mock interview sessions and guidance for visa interviews.',
+    duration: '1 hour'
+  }
+];
+
+const contactInfo = [
+  {
+    icon: PhoneIcon,
+    title: 'Phone',
+    details: '+1 (555) 123-4567',
+    description: 'Call us for immediate assistance'
+  },
+  {
+    icon: EnvelopeIcon,
+    title: 'Email',
+    details: 'info@visaconsultancy.com',
+    description: 'Send us your queries'
+  },
+  {
+    icon: MapPinIcon,
+    title: 'Address',
+    details: '123 Visa Street, Immigration City, IC 12345',
+    description: 'Visit our office'
+  }
+];
 
 export default function Appointment() {
   return (
-    <section className="py-24 bg-white dark:bg-dark-900">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-dark-800 dark:to-dark-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block mb-4"
+          >
+            <span className="text-primary font-semibold text-lg uppercase tracking-wider">Book an Appointment</span>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-4"
+            transition={{ delay: 0.1 }}
+            className="text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
           >
-            Book an Appointment
+            Schedule Your Consultation
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Schedule a consultation with our immigration experts to discuss your visa requirements.
+            Book a consultation with our immigration experts to discuss your visa requirements and get personalized guidance.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-gray-50 dark:bg-dark-800 rounded-xl p-8"
-          >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Contact Information</h3>
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <CalendarIcon className="h-6 w-6 text-primary mt-1 mr-4" />
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white">Office Hours</h4>
-                  <p className="text-gray-600 dark:text-gray-300">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {appointmentTypes.map((type, index) => (
+            <motion.div
+              key={type.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div className="flex items-center mb-4">
+                <CalendarIcon className="h-8 w-8 text-primary mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{type.title}</h3>
               </div>
-              <div className="flex items-start">
-                <PhoneIcon className="h-6 w-6 text-primary mt-1 mr-4" />
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white">Phone</h4>
-                  <p className="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</p>
-                </div>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{type.description}</p>
+              <div className="flex items-center text-gray-500 dark:text-gray-400">
+                <ClockIcon className="h-5 w-5 mr-2" />
+                <span>Duration: {type.duration}</span>
               </div>
-              <div className="flex items-start">
-                <EnvelopeIcon className="h-6 w-6 text-primary mt-1 mr-4" />
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white">Email</h4>
-                  <p className="text-gray-600 dark:text-gray-300">info@globalvisa.com</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-gray-50 dark:bg-dark-800 rounded-xl p-8"
-          >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Schedule a Consultation</h3>
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"
-                ></textarea>
-              </div>
-              <button type="submit" className="btn-primary w-full">
-                Schedule Appointment
-              </button>
-            </form>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {contactInfo.map((info, index) => (
+            <motion.div
+              key={info.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg"
+            >
+              <div className="flex items-center mb-4">
+                <info.icon className="h-6 w-6 text-primary mr-3" />
+                <h4 className="text-xl font-semibold text-gray-900 dark:text-white">{info.title}</h4>
+              </div>
+              <p className="text-lg font-medium text-gray-900 dark:text-white mb-2">{info.details}</p>
+              <p className="text-gray-600 dark:text-gray-300">{info.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <button className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-dark transition-colors duration-300">
+            Book Your Appointment Now
+          </button>
+        </motion.div>
       </div>
     </section>
   );

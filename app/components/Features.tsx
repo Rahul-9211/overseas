@@ -10,7 +10,7 @@ import {
   CurrencyDollarIcon,
   ChatBubbleLeftRightIcon
 } from '@heroicons/react/24/outline';
-
+import { useRouter } from 'next/navigation';
 const features = [
   {
     title: 'Expert Guidance',
@@ -57,6 +57,7 @@ const features = [
 ];
 
 export default function Features() {
+  const router = useRouter();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -88,7 +89,7 @@ export default function Features() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="card h-full hover:shadow-xl transition-all duration-300">
+              <div className="card h-full hover:shadow-xl transition-all duration-300 cursor-pointer">
                 <div className="relative">
                   {/* Feature Icon */}
                   <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${feature.color} dark:${feature.darkColor} 
@@ -124,7 +125,7 @@ export default function Features() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <button className="btn-primary">
+          <button onClick={() => router.push('/contact')} className="btn-primary">
             Get Started Today
             <span className="ml-2">→</span>
           </button>

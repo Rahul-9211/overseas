@@ -2,7 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { GlobeAltIcon, DocumentCheckIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import { GlobeAltIcon, DocumentCheckIcon, ChartBarIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const stats = [
   {
@@ -22,11 +25,26 @@ const stats = [
   },
 ];
 
-export default function Hero() {
+interface HeroProps {
+  onConsultationClick: () => void;
+}
+
+export default function Hero({ onConsultationClick }: HeroProps) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const [particles, setParticles] = useState<Array<{ x: number; y: number }>>([]);
+
+  useEffect(() => {
+    // Generate particles only on client side
+    setParticles(
+      Array.from({ length: 20 }, () => ({
+        x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+        y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+      }))
+    );
+  }, []);
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
@@ -41,11 +59,11 @@ export default function Hero() {
         
         {/* Floating Particles */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {particles.map((particle, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-primary-500/20 rounded-full dark:bg-primary-400/20"
-              initial={{ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight }}
+              initial={{ x: particle.x, y: particle.y }}
               animate={{
                 y: [0, -20, 0],
                 x: [0, Math.random() * 20 - 10, 0],
@@ -71,14 +89,16 @@ export default function Hero() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <motion.h1 
-              className="text-5xl md:text-6xl font-bold mb-6"
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
             >
-              Your Gateway to{' '}
-              <span className="gradient-text">Global Opportunities</span>
+              What we can {' '}<br/> do for you ?
+              <span className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
+                VisaFilling.com
+              </span>
             </motion.h1>
             
             <motion.p 
@@ -97,13 +117,18 @@ export default function Hero() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <button className="btn-primary">
-                Get Started
-                <span className="ml-2">→</span>
+              <button
+                onClick={onConsultationClick}
+                className="btn-primary inline-flex items-center px-8 py-4 text-lg"
+              >
+                Get Free Consultation <ArrowRightIcon className="h-6 w-6 ml-2" />
               </button>
-              <button className="btn-outline">
+              <Link 
+                href="/contact" 
+                className="btn-outline inline-flex items-center px-8 py-4 text-lg"
+              >
                 Learn More
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
 

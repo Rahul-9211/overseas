@@ -46,7 +46,7 @@ const visaTypes = [
   },
 ];
 
-export default function VisitVisa() {
+export default function   VisitVisa() {
   return (
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-dark-800 dark:to-dark-900">
       <div className="container mx-auto px-4">
@@ -87,7 +87,7 @@ export default function VisitVisa() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="group relative bg-white dark:bg-dark-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
+              className="group relative bg-white dark:bg-dark-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer"
             >
               <div className="relative h-48">
                 <Image
@@ -121,7 +121,7 @@ export default function VisitVisa() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative bg-white dark:bg-dark-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
+                className="group relative bg-white dark:bg-dark-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer"
               >
                 <div className="relative h-48">
                   <Image

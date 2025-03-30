@@ -6,10 +6,9 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 const navigation = {
   main: [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Countries', href: '/countries' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Appointment', href: '/appointment' },
   ],
   social: [
     {
@@ -56,9 +55,10 @@ export default function Footer() {
             </Link>
           ))}
         </div>
-        <p className="mt-10 text-center text-xs leading-5 text-gray-500">
-          &copy; {new Date().getFullYear()} Global Visa Solutions. All rights reserved.
-        </p>
+       
+        <div className="text-center text-gray-600 dark:text-gray-400">
+          <p>&copy; {new Date().getFullYear()} VisaFilling.com. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );

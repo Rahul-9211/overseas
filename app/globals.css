@@ -228,6 +228,15 @@
   }
 }
 
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -242,6 +251,10 @@
 
 .animate-blob {
   animation: blob 7s infinite;
+}
+
+.animate-slide {
+  animation: slide 30s linear infinite;
 }
 
 .animation-delay-2000 {
