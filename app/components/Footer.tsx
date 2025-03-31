@@ -47,17 +47,17 @@ export default function Footer() {
             </div>
           ))}
         </nav>
-        <div className="mt-10 flex justify-center space-x-10">
+        {/* <div className="mt-10 flex justify-center space-x-10">
           {navigation.social.map((item) => (
             <Link key={item.name} href={item.href} className="text-gray-400 hover:text-primary">
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </Link>
           ))}
-        </div>
+        </div> */}
        
-        <div className="text-center text-gray-600 dark:text-gray-400">
-          <p>&copy; {new Date().getFullYear()} VisaFilling.com. All rights reserved.</p>
+        <div className="text-center text-gray-600 dark:text-gray-400 pt-8">
+          <p>&copy;2020 VisaFilling.com. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -13,6 +13,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon
 } from '@heroicons/react/24/outline';
+import ConsultationForm from './ConsultationForm';
 
 const services = [
   {
@@ -100,15 +101,21 @@ Iceland, Liechtenstein, Norway, and Switzerland.`,
     darkColor: 'from-red-400 to-red-500'
   },
   {
-    title: 'Apply For Passport Form',
-    description: 'NAME, NUMBER, EMAIL ID, SUBMIT',
+    title: 'Apply For Passport',
+    description: `NAME  
+    NUMBER
+     EMAIL ID
+     SUBMIT`,
     icon: BuildingOfficeIcon,
     color: 'from-yellow-500 to-yellow-600',
     darkColor: 'from-yellow-400 to-yellow-500'
   },
   {
     title: 'Appointment Booking',
-    description: 'FORM NAME NUMBER EMAIL ID SUBMIT',
+    description: `NAME
+     NUMBER 
+     EMAIL ID
+      SUBMIT`,
     icon: AcademicCapIcon,
     color: 'from-indigo-500 to-indigo-600',
     darkColor: 'from-indigo-400 to-indigo-500'
@@ -122,12 +129,19 @@ export default function Services() {
   });
 
   const [expandedCards, setExpandedCards] = useState<{ [key: string]: boolean }>({});
+  const [showConsultation, setShowConsultation] = useState(false);
 
   const toggleCard = (title: string) => {
     setExpandedCards(prev => ({
       ...prev,
       [title]: !prev[title]
     }));
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Don't open popup if clicking the "Read More" button
+    if ((e.target as HTMLElement).closest('button')) return;
+    setShowConsultation(true);
   };
 
   return (
@@ -160,7 +174,10 @@ export default function Services() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="card h-full hover:shadow-xl transition-all duration-300 cursor-pointer">
+              <div 
+                className="card h-full hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={handleCardClick}
+              >
                 <div className="relative p-6">
                   {/* Service Icon */}
                   <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${service.color} dark:${service.darkColor} 
@@ -229,6 +246,11 @@ export default function Services() {
           </button> */}
         </motion.div>
       </div>
+
+      <ConsultationForm 
+        isOpen={showConsultation} 
+        onClose={() => setShowConsultation(false)} 
+      />
     </section>
   );
 } 

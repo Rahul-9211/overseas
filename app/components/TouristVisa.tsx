@@ -9,43 +9,43 @@ const popularDestinations = [
   {
     country: 'USA (B1/B2)',
     description: 'Business and tourist visa for visiting the United States. Perfect for business meetings, tourism, and family visits.',
-    duration: 'Up to 10 years',
-    processingTime: '2-3 weeks',
+    duration: '5 years',
+    processingTime: '30 days',
     image: 'https://images.unsplash.com/photo-1502175353174-a7a70e73b362?auto=format&fit=crop&q=80&w=1000'
   },
   {
     country: 'Schengen Visa',
     description: 'Access to 29 European countries with a single visa. Ideal for tourism, business, and family visits across Europe.',
-    duration: 'Up to 90 days',
-    processingTime: '2-4 weeks',
+    duration: '1 month - 3 years',
+    processingTime: '45 days',
     image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1000'
   },
   {
     country: 'Serbia Work Visa',
     description: 'Work permit for employment opportunities in Serbia. Includes job search and work authorization.',
-    duration: '1 year',
-    processingTime: '3-4 weeks',
+    duration: '2 years',
+    processingTime: '4 months',
     image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&q=80&w=1000'
   },
   {
     country: 'Germany Job Seeker',
     description: '6-month visa to search for employment opportunities in Germany. Perfect for skilled professionals.',
     duration: '6 months',
-    processingTime: '4-6 weeks',
+    processingTime: '3 months',
     image: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000'
   },
   {
     country: 'Canada PR',
     description: 'Permanent residency pathway to Canada. Includes work rights, healthcare, and social benefits.',
-    duration: 'Permanent',
-    processingTime: '6-12 months',
+    duration: '5 years',
+    processingTime: '11 months',
     image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&q=80&w=1000'
   },
   {
     country: 'Australia PR',
     description: 'Permanent residency in Australia with full work rights, healthcare, and social security benefits.',
-    duration: 'Permanent',
-    processingTime: '6-12 months',
+    duration: '5 years',
+    processingTime: '10 months',
     image: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000'
   }
 ];
@@ -132,7 +132,7 @@ export default function TouristVisa() {
 
       <div className="container relative mx-auto px-4">
         {/* Animated Countries Marquee */}
-        <div className="relative overflow-hidden mb-16 pb-8">
+        {/* <div className="relative overflow-hidden mb-16 pb-8">
           <div className="flex animate-marquee whitespace-nowrap">
             {[...countries, ...countries].map((country, index) => (
               <div
@@ -156,7 +156,7 @@ export default function TouristVisa() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className="text-center mb-16">
           <motion.div
