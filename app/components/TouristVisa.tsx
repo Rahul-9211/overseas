@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import { CheckCircleIcon, GlobeAltIcon, ClockIcon, DocumentTextIcon, UserGroupIcon, MapPinIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import usa from '../../public/images/usa.jpg';
+import france from '../../public/images/france.jpg';
+import serbia from '../../public/images/serbia.jpg';
+import germany from '../../public/images/germany.jpg';
+import canada from '../../public/images/canada.jpg';
+import australia from '../../public/images/australia.jpg';
 
 const popularDestinations = [
   {
@@ -11,42 +17,42 @@ const popularDestinations = [
     description: 'Business and tourist visa for visiting the United States. Perfect for business meetings, tourism, and family visits.',
     duration: '5 years',
     processingTime: '30 days',
-    image: 'https://images.unsplash.com/photo-1502175353174-a7a70e73b362?auto=format&fit=crop&q=80&w=1000'
+    image: usa
   },
   {
     country: 'Schengen Visa',
     description: 'Access to 29 European countries with a single visa. Ideal for tourism, business, and family visits across Europe.',
     duration: '1 month - 3 years',
     processingTime: '45 days',
-    image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1000'
+    image: france
   },
   {
     country: 'Serbia Work Visa',
     description: 'Work permit for employment opportunities in Serbia. Includes job search and work authorization.',
     duration: '2 years',
     processingTime: '4 months',
-    image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&q=80&w=1000'
+    image: serbia
   },
   {
     country: 'Germany Job Seeker',
     description: '6-month visa to search for employment opportunities in Germany. Perfect for skilled professionals.',
     duration: '6 months',
     processingTime: '3 months',
-    image: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000'
+    image: germany
   },
   {
     country: 'Canada PR',
     description: 'Permanent residency pathway to Canada. Includes work rights, healthcare, and social benefits.',
     duration: '5 years',
     processingTime: '11 months',
-    image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&q=80&w=1000'
+    image: canada
   },
   {
     country: 'Australia PR',
     description: 'Permanent residency in Australia with full work rights, healthcare, and social security benefits.',
     duration: '5 years',
     processingTime: '10 months',
-    image: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000'
+    image: australia
   }
 ];
 

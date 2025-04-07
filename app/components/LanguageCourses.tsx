@@ -6,27 +6,27 @@ import { CheckCircleIcon } from '@heroicons/react/24/outline';
 const languages = [
   {
     name: 'JAPANESE',
-    description: 'Business Japanese with cultural immersion',
+    description: '6 months - 3 Years',
     icon: '🇯🇵'
   },
   {
     name: 'FRENCH',
-    description: 'Professional French with work experience',
+    description: '6 months - 3 Years',
     icon: '🇫🇷'
   },
   {
     name: 'SPANISH',
-    description: 'Business Spanish and cultural exchange',
+    description: '6 months - 3 Years',
     icon: '🇪🇸'
   },
   {
     name: 'GERMAN',
-    description: 'Technical German with job placement',
+    description: '6 months - 3 Years',
     icon: '🇩🇪'
   },
   {
     name: 'KOREAN',
-    description: 'Business Korean with cultural training',
+    description: '6 months - 3 Years',
     icon: '🇰🇷'
   }
 ];

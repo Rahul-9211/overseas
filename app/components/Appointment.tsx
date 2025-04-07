@@ -30,7 +30,7 @@ const contactInfo = [
   {
     icon: PhoneIcon,
     title: 'Phone',
-    details: '+1 (555) 123-4567',
+    details: '+91 9650733930 , +91 92112 06599',
     description: 'Call us for immediate assistance'
   },
   {

@@ -57,7 +57,7 @@ export default function Footer() {
         </div> */}
        
         <div className="text-center text-gray-600 dark:text-gray-400 pt-8">
-          <p>&copy;2020 VisaFilling.com. All rights reserved.</p>
+          <p>&copy;2020 VisaFilling.com. All rights reserved. || Developed by <a className="text-primary font-bold" href="https://hackrest.com" target="_blank" rel="noopener noreferrer">Hackrest</a></p>
         </div>
       </div>
     </footer>

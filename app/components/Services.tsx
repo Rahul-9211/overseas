@@ -38,15 +38,18 @@ DENMARK
 SWITZERLAND
 UAE
 SERBIA
-
-Professional Resume Writing (Upload your Details)`,
+`,
     icon: BriefcaseIcon,
     color: 'from-blue-500 to-blue-600',
     darkColor: 'from-blue-400 to-blue-500'
   },
   {
     title: 'Tourist Visas',
-    description: `Indonesia
+    description: `What is Tourist Visa?
+
+Tourist/Travel visas allow the bearer to enter a foreign country for touristic and leisure purposes only and stay for a predetermined amount of time. These visas do not entitle the holder to work or engage in any business activities in the host country.
+
+Indonesia
 Japan
 Laos
 JORDAN
@@ -73,7 +76,16 @@ Fiji`,
   },
   {
     title: 'Documentation',
-    description: 'Comprehensive documentation support including visa applications, passport renewal, and legal paperwork.',
+    description: `* Receive and review visa applications, ensuring all necessary documents are included and completed accurately.
+* Verify the authenticity and validity of supporting documents and information provided by the Customers.
+* Maintain an organized system for tracking and managing visa documentation.
+* Prepare and submit visa applications to the appropriate embassy or consulate.
+* Keep updated records of visa application statuses and communicate with customers regarding any additional requirements or changes in the application process.
+* Serve as a point of contact for Customers, providing them with clear and accurate information about the visa application process, requirements, fees, and processing times.
+* Respond to Customers inquiries promptly and professionally, maintaining excellent customer service.
+* Address any issues or challenges that arise during the visa application process, such as missing documents, discrepancies, or delays.
+* Conduct regular quality checks to ensure accuracy and completeness of visa documentation. Review visa applications thoroughly, identifying any errors or inconsistencies and rectifying them before submission.
+`,
     icon: DocumentCheckIcon,
     color: 'from-green-500 to-green-600',
     darkColor: 'from-green-400 to-green-500'
@@ -102,20 +114,20 @@ Iceland, Liechtenstein, Norway, and Switzerland.`,
   },
   {
     title: 'Apply For Passport',
-    description: `NAME  
-    NUMBER
-     EMAIL ID
-     SUBMIT`,
+    description: `what is Passport?
+
+A formal document issued by an authorized official of a country to one of its citizens that is usually necessary for exit from and reentry into the country, that allows the citizen to travel in a foreign country in accordance with visa requirements, and that requests protection for the citizen while abroad.`,
     icon: BuildingOfficeIcon,
     color: 'from-yellow-500 to-yellow-600',
     darkColor: 'from-yellow-400 to-yellow-500'
   },
   {
-    title: 'Appointment Booking',
-    description: `NAME
-     NUMBER 
-     EMAIL ID
-      SUBMIT`,
+    title: 'Resume Writing',
+    description: `A resume is a summary of your work profile, combined with your most recent achievements and skills. A well-written resume is a one- or two-page document that states your relevant skills and work experience. What is A Resume ?
+
+
+Your resume puts forward your most important skills and accomplishments to inform the HR manager that you are the right candidate for the role.
+Resumes also offer an effective way for you to assess your career trajectory and skills to make suitable adjustments or additions to them as per the demand in the industry. It is your first impression to the recruiter and helps them decide whether to invite you to interview. Writing a strong resume typically requires planning and understanding what the hiring managers are looking for, as it can be difficult to detail every single aspect of your work experience within one or two pages.`,
     icon: AcademicCapIcon,
     color: 'from-indigo-500 to-indigo-600',
     darkColor: 'from-indigo-400 to-indigo-500'

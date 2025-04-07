@@ -8,7 +8,7 @@ import ThemeToggle from './ThemeToggle';
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'VISA/VISA Appointment', href: '/appointment' },
+  { name: 'VISA/VFS Appointment', href: '/appointment' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -21,7 +21,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-2xl font-bold text-primary">Global Visa</span>
+              <span className="text-2xl font-bold text-primary uppercase">Visa Filling</span> 
             </Link>
           </div>
           <div className="flex lg:hidden">

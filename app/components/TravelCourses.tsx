@@ -7,22 +7,22 @@ const courses = [
   {
     name: 'AVIATION AND TRAVEL MANAGEMENT',
     icon: PaperAirplaneIcon,
-    description: 'Flight operations and travel industry management training'
+    description: `Travel Management gives you the knowledge about the functions of Airline Reservation, IATA World Geography, Itinerary Planning, Travel Documents and Amadeus Global Distribution System (GDS) Travel Management is the course designed by the our reservation experts`
   },
   {
     name: 'TICKETING',
     icon: TicketIcon,
-    description: 'Master travel ticketing and reservation systems'
+    description: `Air ticketing is a process of booking and issuing airline tickets for people or organizations that want to travel by air. It is an essential component of the aviation sector since it allows customers to book seats on flights and go to their intended destinations. Understanding flight schedules, the inventory of seats that are available, pricing, price restrictions, and providing electronic or paper tickets are only a few of the activities involved in selling airline tickets.`
   },
   {
     name: 'TOUR AND TRAVEL CONSULTANT',
     icon: GlobeAltIcon,
-    description: 'Professional travel consultant training'
+    description: `Diploma programs in this field cover topics that include hospitality services, and travel booking as well as business and finance concepts. List of courses: Principles of Travel and Tourism This course gives students the basics in navigating the travel and tourism industry.`
   },
   {
     name: 'VISA FILLING',
     icon: DocumentTextIcon,
-    description: 'Visa application and documentation expertise'
+    description: `VISA Filling Course provides a comprehensive knowledge of VISA Management & Immigration Rules. A student can get a complete knowledge of VISA Filing Process. Learn practical to understand the VISA Management for various countries in Travel-Tourism Industry. Under this VISA Management Course you get 360° knowledge of VISA & Immigration process and learn in-depth knowledge of VISA business industry.`
   }
 ];
 

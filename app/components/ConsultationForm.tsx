@@ -120,7 +120,7 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="input-field"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+91 9650733930"
                     required
                   />
                 </div>
