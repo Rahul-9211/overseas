@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import { sendEmail } from '../../src/utils/email';
 
 interface ConsultationFormProps {
   isOpen: boolean;
@@ -15,13 +16,45 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
     lastName: '',
     email: '',
     phone: '',
+    message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    onClose();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await sendEmail({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message || 'No additional message provided.',
+      });
+
+      if (response.success) {
+        setSubmitStatus({ success: true, message: 'Thank you! We will contact you shortly.' });
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+        setTimeout(() => {
+          onClose();
+        }, 2000);
+      } else {
+        setSubmitStatus({ 
+          success: false, 
+          message: response.error || 'Something went wrong. Please try again.' 
+        });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({ 
+        success: false, 
+        message: 'An unexpected error occurred. Please try again later.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -44,27 +77,27 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
             exit={{ opacity: 0, scale: 0.95 }}
             className="fixed inset-0 flex items-center justify-center z-50 p-4"
           >
-            <div className="w-full max-w-md bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-8 relative">
+            <div className="w-full max-w-md bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-6 relative">
               {/* Close button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
               >
-                <XMarkIcon className="h-6 w-6" />
+                <XMarkIcon className="h-5 w-5" />
               </button>
 
               {/* Header */}
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                   Get Free Consultation
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   Fill out the form below and we'll get back to you shortly
                 </p>
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     First Name
@@ -77,6 +110,7 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
                     className="input-field"
                     placeholder="John"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -92,6 +126,7 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
                     className="input-field"
                     placeholder="Doe"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -107,6 +142,7 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
                     className="input-field"
                     placeholder="john@example.com"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -122,14 +158,36 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
                     className="input-field"
                     placeholder="+91 9650733930"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Message (Optional)
+                  </label>
+                  <textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="input-field min-h-[80px]"
+                    placeholder="Tell us about your requirements..."
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                {submitStatus && (
+                  <div className={`p-4 rounded-lg ${submitStatus.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-300"
+                  className="w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                 >
-                  Submit
+                  {isSubmitting ? 'Sending...' : 'Submit'}
                 </button>
               </form>
             </div>

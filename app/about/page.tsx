@@ -1,10 +1,13 @@
 import AboutUs from "../components/AboutUs";
-import Testimonials from "../components/Testimonials";
+import DirectorsSection from "../components/DirectorsSection";
 
- const About = () => {
+const About = () => {
     return (
-        <div><AboutUs /></div>
+        <div>
+            <AboutUs />
+            <DirectorsSection />
+        </div>
     )
- }
+}
 
- export default About;
+export default About;
