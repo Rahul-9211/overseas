@@ -116,7 +116,11 @@ Iceland, Liechtenstein, Norway, and Switzerland.`,
     title: 'Apply For Passport',
     description: `what is Passport?
 
-A formal document issued by an authorized official of a country to one of its citizens that is usually necessary for exit from and reentry into the country, that allows the citizen to travel in a foreign country in accordance with visa requirements, and that requests protection for the citizen while abroad.`,
+A formal document issued by an authorized official of 
+a country to one of its citizens that is usually necessary for
+ exit from and reentry into the country, that allows the citizen
+  to travel in a foreign country in accordance with visa requirements, 
+  and that requests protection for the citizen while abroad.`,
     icon: BuildingOfficeIcon,
     color: 'from-yellow-500 to-yellow-600',
     darkColor: 'from-yellow-400 to-yellow-500'

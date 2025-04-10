@@ -5,6 +5,8 @@ import ThemeProvider from './components/ThemeProvider';
 import Header from "./components/Header";
 import Footer from './components/Footer';
 import ConsultationPopup from './components/ConsultationPopup';
+import { ConsultationProvider } from "../src/utils/ConsultationContext";
+import Script from 'next/script';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,11 +28,32 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} scroll-smooth antialiased bg-white dark:bg-dark-900 text-dark-800 dark:text-gray-100`}>
         <ThemeProvider>
-          <Header />
-          {children}
-          <Footer />
-          <ConsultationPopup />
+          <ConsultationProvider>
+            <Header />
+            {children}
+            <Footer />
+            <ConsultationPopup />
+          </ConsultationProvider>
         </ThemeProvider>
+        
+        {/* Force open the consultation form after 2 seconds */}
+        <Script id="open-consultation-form" strategy="afterInteractive">
+          {`
+            setTimeout(() => {
+              try {
+                // Try to find and click any consultation button in the DOM
+                const formElement = document.querySelector('[aria-label="Open consultation form"]');
+                if (formElement) {
+                  formElement.click();
+                } else if (window.openConsultationForm) {
+                  window.openConsultationForm();
+                }
+              } catch (e) {
+                console.error('Error opening consultation form:', e);
+              }
+            }, 2000);
+          `}
+        </Script>
       </body>
     </html>
   );
