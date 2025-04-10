@@ -60,6 +60,13 @@
     overflow: hidden;
   }
   
+  /* Mobile optimization for buttons */
+  @media (max-width: 640px) {
+    .btn-primary, .btn-secondary, .btn-outline {
+      @apply text-sm px-4 py-2.5 w-full justify-center mb-2 sm:mb-0;
+    }
+  }
+  
   .btn-primary::before {
     content: '';
     @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0
@@ -171,6 +178,40 @@
            dark:focus:border-primary-400 dark:focus:ring-primary-900
            dark:text-white dark:placeholder-gray-500;
   }
+
+  .glass {
+    @apply bg-white rounded-xl p-6 
+           border border-gray-200 hover:border-gray-300
+           hover:shadow-lg transition-all duration-300
+           dark:bg-dark-800 dark:border-dark-700 
+           dark:hover:border-dark-600;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Mobile-optimized glass cards */
+  @media (max-width: 640px) {
+    .glass {
+      @apply p-4 shadow-md;
+    }
+    
+    .glass-stats {
+      @apply flex flex-col items-center justify-center py-4 px-3;
+    }
+  }
+
+  .glass::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/5 to-primary-500/0
+           dark:from-primary-400/0 dark:via-primary-400/5 dark:to-primary-400/0
+           translate-x-[-100%] transition-transform duration-1000;
+  }
+  
+  .glass:hover::before {
+    @apply translate-x-[100%];
+  }
 }
 
 /* Custom Animations */
@@ -276,8 +317,15 @@
 /* Gradient Text */
 .gradient-text {
   @apply bg-gradient-to-r from-primary-600 via-secondary-600 to-accent-600 
-         bg-clip-text text-transparent
+         bg-clip-text text-transparent inline-block
          dark:from-primary-400 dark:via-secondary-400 dark:to-accent-400;
+}
+
+/* Add responsive styling for mobile */
+@media (max-width: 640px) {
+  .gradient-text {
+    @apply text-2xl leading-tight;
+  }
 }
 
 /* Custom Scrollbar */

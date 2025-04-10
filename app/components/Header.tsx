@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className="fixed w-full bg-white dark:bg-dark-800 shadow-md z-50">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 md:h-16 items-center justify-between">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="text-2xl font-bold text-primary uppercase">Visa Filling</span> 
@@ -57,7 +57,7 @@ export default function Header() {
       {/* Mobile menu */}
       <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'}`}>
         <div className="fixed inset-0 bg-gray-900/80 dark:bg-dark-900/80" onClick={() => setMobileMenuOpen(false)} />
-        <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-dark-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-700/10">
+        <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-dark-800 px-4 py-4 sm:max-w-sm sm:px-6 sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-700/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="text-2xl font-bold text-primary">Global Visa</span>
