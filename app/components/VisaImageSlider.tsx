@@ -5,30 +5,19 @@ import Image from 'next/image';
 
 const visaImages = [
   {
-    url: '/images/v1.jpg',
+    url: '/images/visa1.png',
     alt: 'USA B1/B2 Visa Document'
   },
   {
-    url: '/images/v1.jpg',
+    url: '/images/visa2.png',
     alt: 'Schengen Visa Document'
   },
   {
-    url: '/images/v1.jpg',
+    url: '/images/visa3.png',
     alt: 'Serbia Work Visa Document'
   },
-  {
-    url: '/images/v1.jpg',
-    alt: 'Germany Job Seeker Visa Document'
-  },
-  {
-    url: '/images/v1.jpg',
-    alt: 'Canada PR Document'
-  },
-  {
-    url: '/images/v1.jpg',
-    alt: 'Australia PR Document'
-  }
-];
+]
+
 
 export default function VisaImageSlider() {
   return (
