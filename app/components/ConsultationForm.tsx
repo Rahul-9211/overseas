@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { sendEmail } from '../../src/utils/email';
 
 interface ConsultationFormProps {
   isOpen: boolean;
@@ -36,14 +35,20 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
     setSubmitStatus(null);
 
     try {
-      const response = await sendEmail({
-        name: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message || 'No additional message provided.',
+      const response = await fetch('https://formspree.io/f/mrbpngbl', { // Replace YOUR_FORM_ID with your Formspree form ID
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message || 'No additional message provided.',
+        }),
       });
 
-      if (response.success) {
+      if (response.ok) {
         setSubmitStatus({ success: true, message: 'Thank you! We will contact you shortly.' });
         setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
         setTimeout(() => {
@@ -52,7 +57,7 @@ export default function ConsultationForm({ isOpen, onClose }: ConsultationFormPr
       } else {
         setSubmitStatus({ 
           success: false, 
-          message: response.error || 'Something went wrong. Please try again.' 
+          message: 'Something went wrong. Please try again.' 
         });
       }
     } catch (error) {

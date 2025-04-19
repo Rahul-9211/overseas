@@ -10,11 +10,45 @@ export default function EligibilityForm() {
     lastName: '',
     email: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mrbpngbl', { // Replace YOUR_FORM_ID with your Formspree form ID
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          form_type: 'eligibility_check'
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({ success: true, message: 'Thank you! We will review your eligibility and contact you within 24 hours.' });
+        setFormData({ firstName: '', lastName: '', email: '' });
+      } else {
+        setSubmitStatus({ 
+          success: false, 
+          message: 'Something went wrong. Please try again.' 
+        });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({ 
+        success: false, 
+        message: 'An unexpected error occurred. Please try again later.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -48,6 +82,20 @@ export default function EligibilityForm() {
               </div>
             </div>
 
+            {submitStatus && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-4 rounded-lg mb-6 ${
+                  submitStatus.success 
+                    ? 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300' 
+                    : 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'
+                }`}
+              >
+                {submitStatus.message}
+              </motion.div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -61,6 +109,7 @@ export default function EligibilityForm() {
                   className="input-field"
                   placeholder="John"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -76,6 +125,7 @@ export default function EligibilityForm() {
                   className="input-field"
                   placeholder="Doe"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -91,15 +141,29 @@ export default function EligibilityForm() {
                   className="input-field"
                   placeholder="john@example.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-dark transition-colors duration-300 flex items-center justify-center group"
+                disabled={isSubmitting}
+                className="w-full bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-dark transition-colors duration-300 flex items-center justify-center group disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <span>Check Eligibility</span>
-                <CheckCircleIcon className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
+                {isSubmitting ? (
+                  <span className="flex items-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing...
+                  </span>
+                ) : (
+                  <>
+                    <span>Check Eligibility</span>
+                    <CheckCircleIcon className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
+                  </>
+                )}
               </button>
             </form>
 
