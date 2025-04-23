@@ -16,17 +16,7 @@ const DirectorsSection = () => {
         "Successfully processed thousands of visa applications"
       ]
     },
-    {
-      name: "Vijay Selwal",
-      role: "Co-Founder",
-      image: "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?semt=ais_hybrid&w=740",
-      description: "Vijay Selwal brings a unique perspective to the immigration process, combining technical expertise with a deep understanding of client needs. His innovative approach has revolutionized how we handle visa applications.",
-      achievements: [
-        "Pioneered efficient visa processing methods",
-        "Developed streamlined documentation systems",
-        "Built strong international partnerships"
-      ]
-    }
+    
   ];
 
   return (
