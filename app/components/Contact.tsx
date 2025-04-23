@@ -12,7 +12,7 @@ import {
 const contactInfo = [
   {
     title: 'Phone',
-    value: '+91 9650733930 , +91 92112 06599',
+    value: '+91 9650733930',
     icon: PhoneIcon,
     color: 'from-blue-500 to-blue-600',
     darkColor: 'from-blue-400 to-blue-500',
