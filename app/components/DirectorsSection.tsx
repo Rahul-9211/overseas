@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 const DirectorsSection = () => {
   const directors = [
     {
-      name: "Komal Selwal",
+      name: "Komal Bhaisora",
       role: "Director",
       image: "https://img.freepik.com/free-vector/businesswoman-character-avatar-isolated_24877-60111.jpg?semt=ais_hybrid&w=740",
-      description: "With extensive experience in immigration and visa services, Komal Selwal has been instrumental in helping thousands of clients achieve their dreams of working and living abroad. Her expertise in documentation and visa processing has made her a trusted name in the industry.",
+      description: "With extensive experience in immigration and visa services, Komal Bhaisora has been instrumental in helping thousands of clients achieve their dreams of working and living abroad. Her expertise in documentation and visa processing has made her a trusted name in the industry.",
       achievements: [
         "Expert in visa documentation and processing",
         "Extensive network of global immigration partners",
